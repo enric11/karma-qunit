@@ -1,0 +1,43 @@
+name: Pull request UT testing
+
+on:
+  pull_request:
+   branches: [ main ]
+
+env:
+  FORCE_COLOR: 2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [14]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          
+      - name: Install npm dependencies
+        run: npm ci
+        
+      - name: Run tests
+        id: test
+        run: npm run test
+        continue-on-error: true
+        
+      - name: UT Pass adding comment
+        uses: thollander/actions-comment-pull-request@v1
+        if: steps.test.outcome == 'success'
+        with:
+           message: "Congratulation you past the UT!"
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           
+      - name: UT Pass adding tag
+        if: steps.test.outcome == 'success'        
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+           labels: UT pass
