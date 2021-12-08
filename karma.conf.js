@@ -19,10 +19,6 @@ module.exports = function (config) {
             level: "error",
         },
         customLaunchers: {
-			CustomChrome: {
-				base: "Chrome",
-				flags: chromeFlags
-			},
 			CustomChromeHeadless: {
 				base: "ChromeHeadless",
 				flags: chromeFlags
