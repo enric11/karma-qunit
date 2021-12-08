@@ -9,13 +9,21 @@
         "sapui5"
     ],
     "main": "webapp/index.html",
-    "dependencies": {},
+    "dependencies": {
+        "karma": "^6.3.9",
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-cli": "^2.0.0",
+        "karma-coverage": "^2.1.0",
+        "karma-ui5": "^2.4.0",
+        "puppeteer": "^12.0.1",
+        "rimraf": "^3.0.2"
+    },
     "devDependencies": {
-        "@ui5/cli": "^2.12.0",
-        "@sap/ux-ui5-tooling": "1",
         "@sap/ui5-builder-webide-extension": "1.0.x",
-        "ui5-task-zipper": "^0.3.1",
-        "mbt": "^1.0.15"
+        "@sap/ux-ui5-tooling": "1",
+        "@ui5/cli": "^2.12.0",
+        "mbt": "^1.0.15",
+        "ui5-task-zipper": "^0.3.1"
     },
     "scripts": {
         "start": "fiori run --open 'test/flpSandbox.html#ecastellakarmaqunit-display'",
@@ -29,7 +37,9 @@
         "int-tests": "fiori run --open test/integration/opaTests.qunit.html",
         "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo",
         "build:mta": "rimraf resources mta_archives && mbt build",
-        "undeploy": "cf undeploy ecastella-karmaqunit --delete-services --delete-service-keys"
+        "undeploy": "cf undeploy ecastella-karmaqunit --delete-services --delete-service-keys",
+        "karma-ci": "karma start karma-ci.conf.js",
+        "test": "npm run karma-ci"
     },
     "ui5": {
         "dependencies": [
