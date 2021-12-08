@@ -23,8 +23,6 @@
         "mbt": "^1.0.15",
         "ui5-task-zipper": "^0.3.1"
     },
-    "devDependencies": {
-    },
     "scripts": {
         "start": "fiori run --open 'test/flpSandbox.html#ecastellakarmaqunit-display'",
         "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
@@ -49,5 +47,11 @@
             "mbt"
         ]
     },
-    "sapuxLayer": "CUSTOMER_BASE"
+    "sapuxLayer": "CUSTOMER_BASE",
+    "optionalDependencies": {
+        "fsevents": "^2.3.2"
+    },
+    "devDependencies": {
+        "qunit": "^2.17.2"
+    }
 }
