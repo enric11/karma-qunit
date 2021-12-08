@@ -16,14 +16,14 @@
         "karma-coverage": "^2.1.0",
         "karma-ui5": "^2.4.0",
         "puppeteer": "^12.0.1",
-        "rimraf": "^3.0.2"
-    },
-    "devDependencies": {
+        "rimraf": "^3.0.2",
         "@sap/ui5-builder-webide-extension": "1.0.x",
         "@sap/ux-ui5-tooling": "1",
         "@ui5/cli": "^2.12.0",
         "mbt": "^1.0.15",
         "ui5-task-zipper": "^0.3.1"
+    },
+    "devDependencies": {
     },
     "scripts": {
         "start": "fiori run --open 'test/flpSandbox.html#ecastellakarmaqunit-display'",
